@@ -19,6 +19,7 @@ namespace FindaRise
             SetTimer();
             GetSunriseSunsetTimes(); // Fetch sunrise and sunset times when the page loads
         }
+        //Timers
         private void SetTimer()
         {
             // Create a timer that triggers every second (1000 ms)
@@ -39,9 +40,6 @@ namespace FindaRise
                 ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
             });
         }
-
-
-
 
         private async void GetSunriseSunsetTimes()
         {
@@ -88,7 +86,7 @@ namespace FindaRise
                 Console.WriteLine(ex.Message);
             }
         }
-
+        //Class for sunrise
         public class SunriseSunsetResponse
         {
             public Results Results { get; set; }
@@ -107,6 +105,11 @@ namespace FindaRise
             public string NauticalTwilightEnd { get; set; }
             public string AstronomicalTwilightBegin { get; set; }
             public string AstronomicalTwilightEnd { get; set; }
+        }
+        //GPS
+        private void SCCtoggle(object sender, EventArgs e)
+        {
+            
         }
     }
 }
