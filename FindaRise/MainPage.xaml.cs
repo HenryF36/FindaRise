@@ -71,6 +71,7 @@ namespace FindaRise
                     // Update UI labels with sunrise and sunset times
                     RiseL.Text = $"The sun will rise at {sunriseUtc.ToLocalTime():hh:mm:ss tt}";
                     SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
+                    DayL.Text = $"The day length is {result.Results.DayLength}";
                 }
                 else
                 {
@@ -78,6 +79,7 @@ namespace FindaRise
                     Console.WriteLine("Deserialization resulted in null.");
                     RiseL.Text = "Error fetching sunrise time.";
                     SetL.Text = "Error fetching sunset time.";
+                    DayL.Text = "Error fetching day length";
                 }
             }
             catch (Exception ex)
@@ -85,7 +87,7 @@ namespace FindaRise
                 // Handle exceptions (e.g., network issues, JSON parsing errors)
                 RiseL.Text = "Error fetching sunrise time.";
                 SetL.Text = "Error fetching sunset time.";
-                Console.WriteLine(ex.Message);
+                DayL.Text = "Error fetching day length";
             }
         }
         //Class for sunrise
@@ -135,6 +137,7 @@ namespace FindaRise
                 Welcome.Text = "Unable to get location: " + ex.Message;
                 RiseL.Text = "Error";
                 SetL.Text = "Error";
+                DayL.Text = "Error";
             }
         }
         private async void SCCtoggle(object sender, EventArgs e)
