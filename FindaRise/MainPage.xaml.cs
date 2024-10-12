@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Security.AccessControl;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Timers;
 using Microsoft.Maui.Dispatching;
 using Newtonsoft.Json;
 
@@ -11,23 +12,42 @@ namespace FindaRise
     public partial class MainPage : ContentPage
     {
         private const string ApiUrl = "https://api.sunrise-sunset.org/json";
-
+        private static System.Timers.Timer _timer;
         public MainPage()
         {
             InitializeComponent();
+            SetTimer();
             GetSunriseSunsetTimes(); // Fetch sunrise and sunset times when the page loads
         }
+        private void SetTimer()
+        {
+            // Create a timer that triggers every second (1000 ms)
+            _timer = new System.Timers.Timer(1000);
+            _timer.Elapsed += OnTimedEvent;
+            _timer.AutoReset = true; // Make sure the timer resets after each interval
+            _timer.Enabled = true;   // Start the timer
+        }
 
-        private void CordTog(object sender, EventArgs e) { 
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            string formattedTime = now.ToString("hh:mm:ss tt");
+
+            // Update the label on the main thread
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
+            });
         }
 
 
-        
+
+
         private async void GetSunriseSunsetTimes()
         {
             try
             {
-                // Specify your location coordinates 42.402830692019236, -83.44996959988292
+                // Specify your location coordinates 42.402830692019236, -83.44996959988292 HOUSE
                 double latitude = 42.402830692019236;
                 double longitude = -83.44996959988292; 
 
