@@ -14,8 +14,8 @@ namespace FindaRise
         private const string ApiUrl = "https://api.sunrise-sunset.org/json";
         private static System.Timers.Timer _timer;
         public Boolean CordShow = false;
-        public double latitude=6666666666666666;
-        public double longitude = 66666666666;
+        public double latitude = 666666666666;
+        public double longitude = 666666666666;
         public MainPage()
         {
             InitializeComponent();
