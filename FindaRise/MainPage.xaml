@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FindaRise.MainPage">
 
@@ -8,19 +7,90 @@
             Padding="30,0"
             Spacing="25">
 
-        <Label
-                Text="Welcome to Find-A-Rise" x:Name="Welcome" FontSize="50" HorizontalOptions="Center"/>
-            <Label x:Name="ClockL" Text="00:00:00" FontSize="35" HorizontalOptions="Center"/>
-            <HorizontalStackLayout Padding="20">
+            <Label
+                Text="Welcome to Find-A-Rise" 
+                x:Name="Welcome" 
+                FontSize="50" 
+                HorizontalOptions="Center" />
+
+            <Label 
+                x:Name="ClockL" 
+                Text="00:00:00" 
+                FontSize="35" 
+                HorizontalOptions="Center" />
+
+            <!-- Image and Label side by side -->
+            <HorizontalStackLayout 
+                Spacing="10" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center">
+
                 <Image 
-                <Label x:Name="RiseL" Text="The sun will rise at loading..." FontSize="30" HorizontalOptions="Center"/>
+                    Source="sunrise.png" 
+                    Aspect="AspectFit" 
+                    HeightRequest="50" 
+                    WidthRequest="50" 
+                    VerticalOptions="Center" />
+
+                <Label 
+                    x:Name="RiseL" 
+                    Text="The sun will rise at loading..." 
+                    FontSize="30" 
+                    VerticalOptions="Center" />
             </HorizontalStackLayout>
-            <Label x:Name="SetL" Text="The sun will set at loading..." FontSize="30" HorizontalOptions="Center"/>
-            <Label x:Name="DayL" Text="The day length is loading..." FontSize="30" HorizontalOptions="Center"/>
-            <Button x:Name="CordSB" Text="Show Current Cooradinates" Clicked="SCCtoggle"/>
-            <Label x:Name="Cord" Text="No Cordanates Found" IsVisible="False" FontSize="25" HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout 
+                Spacing="10" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center">
+
+                <Image 
+                    Source="sunset.png" 
+                    Aspect="AspectFit" 
+                    HeightRequest="50" 
+                    WidthRequest="50" 
+                    VerticalOptions="Center" />
+
+                <Label 
+                    x:Name="SetL" 
+                    Text="The sun will set at loading..." 
+                    FontSize="30" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout 
+                Spacing="10" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center">
+
+                <Image 
+                    Source="day_length.png" 
+                    Aspect="AspectFit" 
+                    HeightRequest="50" 
+                    WidthRequest="50" 
+                    VerticalOptions="Center" />
+
+                <Label 
+                    x:Name="DayL" 
+                    Text="The day length is loading..." 
+                    FontSize="30" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <Button 
+                x:Name="CordSB" 
+                Text="Show Current Coordinates" 
+                Clicked="SCCtoggle" />
+
+            <Label 
+                x:Name="Cord" 
+                Text="No Coordinates Found" 
+                IsVisible="False" 
+                FontSize="25" 
+                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
+
