@@ -148,6 +148,7 @@ namespace FindaRise
             if (!CordShow)
             {
                 Cord.IsVisible = true;
+                cordim.IsVisible = true;
                 await GetCoordinatesAsync();
                 CordShow = true;
                 CordSB.Text = "Hide Current Coordinates";
@@ -157,6 +158,7 @@ namespace FindaRise
             {
                 CordSB.Text = "Show Current Coordinates";
                 Cord.IsVisible = false;
+                cordim.IsVisible= false;
                 CordShow = false;
             }
         }
