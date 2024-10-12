@@ -48,69 +48,64 @@ namespace FindaRise
                 double latitude = 34.0522; // Los Angeles
                 double longitude = -118.2437; // Los Angeles
 
+                // Your WeatherAPI key
+                string apiKey = "YOUR_API_KEY_HERE"; // Replace with your actual API key
+
                 // Create an HTTP client
                 using HttpClient client = new HttpClient();
-                string url = $"{ApiUrl}?lat={latitude}&lng={longitude}&formatted=0"; // Use formatted=0 for ISO 8601 format
+                string url = $"https://api.weatherapi.com/v1/current.json?key={apiKey}&q={latitude},{longitude}";
+                Console.WriteLine($"Request URL: {url}");
 
-                // Log the constructed URL for debugging
-                Console.WriteLine("Constructed URL: " + url);
-
-                // Fetch the response
+                // Get the response from the API
                 string response = await client.GetStringAsync(url);
-
-                // Log the raw response for debugging
                 Console.WriteLine("API Response: " + response);
-                RiseL.Text = "API Response: " + response; // Show raw response for initial debugging
 
                 // Deserialize the JSON response
-                var result = JsonSerializer.Deserialize<SunriseSunsetResponse>(response);
-
-
-                // Check if the result or results is null
-                if (result == null)
+                var weatherResponse = JsonSerializer.Deserialize<WeatherApiResponse>(response);
+                if (weatherResponse != null && weatherResponse.Location != null)
                 {
-                    Console.WriteLine("Deserialization resulted in null. Check JSON structure and class definitions.");
+                    // Get the sunrise and sunset times
+                    string sunrise = weatherResponse.Location.Localtime; // Localtime includes the date and time
+                    string sunset = weatherResponse.Location.Localtime; // Localtime includes the date and time
+
+                    // Update UI labels with sunrise and sunset times
+                    RiseL.Text = $"The sun will rise at {sunrise}";
+                    SetL.Text = $"The sun will set at {sunset}";
+                }
+                else
+                {
+                    // Handle null result
+                    Console.WriteLine("Deserialization resulted in null.");
                     RiseL.Text = "Error fetching sunrise time.";
                     SetL.Text = "Error fetching sunset time.";
-                    return;
                 }
-
-                if (result.Results == null)
-                {
-                    Console.WriteLine("Results in the response is null.");
-                    RiseL.Text = "Error fetching sunrise time.";
-                    SetL.Text = "Error fetching sunset time.";
-                    return;
-                }
-
-                // Convert the UTC time to local time
-                DateTime sunriseUtc = DateTime.Parse(result.Results.Sunrise);
-                DateTime sunsetUtc = DateTime.Parse(result.Results.Sunset);
-
-                // Update UI labels with sunrise and sunset times
-                RiseL.Text = $"The sun will rise at {sunriseUtc.ToLocalTime():hh:mm:ss tt}";
-                SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
-            }
-            catch (HttpRequestException httpEx)
-            {
-                RiseL.Text = "Network error. Please check your internet connection.";
-                SetL.Text = "Network error. Please check your internet connection.";
-                Console.WriteLine("HTTP Error: " + httpEx.Message);
-            }
-            catch (JsonException jsonEx)
-            {
-                RiseL.Text = "Error parsing data.";
-                SetL.Text = "Error parsing data.";
-                Console.WriteLine("JSON Parsing Error: " + jsonEx.Message);
             }
             catch (Exception ex)
             {
-                // Handle any other exceptions
-                RiseL.Text = "Error fetching sunrise time.";
-                SetL.Text = "Error fetching sunset time.";
-                Console.WriteLine("General Error: " + ex.Message);
+                // Display and log the error message
+                RiseL.Text = $"Error fetching sunrise time: {ex.Message}";
+                SetL.Text = $"Error fetching sunset time: {ex.Message}";
+                Console.WriteLine($"Exception Type: {ex.GetType()}");
+                Console.WriteLine($"Exception Message: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
             }
         }
+
+        // Model for the WeatherAPI response
+        public class WeatherApiResponse
+        {
+            public Location Location { get; set; }
+        }
+
+        public class Location
+        {
+            public string Name { get; set; }
+            public string Region { get; set; }
+            public string Country { get; set; }
+            public string Localtime { get; set; } // Includes both date and time
+        }
+
+
 
 
         private void CordTog(object sender, EventArgs e)
@@ -118,26 +113,8 @@ namespace FindaRise
             Console.WriteLine("Coordinates toggled!");
         }
 
-        public class SunriseSunsetResponse
-        {
-            public Results Results { get; set; }
-            public string Status { get; set; }
-            public string Tzid { get; set; } // Added to capture the time zone ID
-        }
-
-        public class Results
-        {
-            public string Sunrise { get; set; }
-            public string Sunset { get; set; }
-            public string SolarNoon { get; set; }
-            public int DayLength { get; set; } // Correct type for day_length
-            public string CivilTwilightBegin { get; set; }
-            public string CivilTwilightEnd { get; set; }
-            public string NauticalTwilightBegin { get; set; }
-            public string NauticalTwilightEnd { get; set; }
-            public string AstronomicalTwilightBegin { get; set; }
-            public string AstronomicalTwilightEnd { get; set; }
-        }
+        
+        
 
 
 
