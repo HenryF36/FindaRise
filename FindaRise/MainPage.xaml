@@ -13,7 +13,8 @@
             <Label x:Name="ClockL" Text="00:00:00" FontSize="35" HorizontalOptions="Center"/>
             <Label x:Name="RiseL" Text="The sun will rise at loading..." FontSize="30" HorizontalOptions="Center"/>
             <Label x:Name="SetL" Text="The sun will set at loading..." FontSize="30" HorizontalOptions="Center"/>
-            <Label Text="These are the corrdanates for 42.402830692019236, -83.44996959988292" HorizontalOptions="Center"/>
+            <Button x:Name="CordSB" Text="Show Current Coradanates" Clicked="SCCtoggle"/>
+            <Label x:Name="Cord" Text="No Cordanates Found" IsVisible="False" FontSize="25" HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>

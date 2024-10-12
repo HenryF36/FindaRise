@@ -13,12 +13,16 @@ namespace FindaRise
     {
         private const string ApiUrl = "https://api.sunrise-sunset.org/json";
         private static System.Timers.Timer _timer;
+        public Boolean CordShow = false;
+        public double latitude=6666666666666666;
+        public double longitude = 66666666666;
         public MainPage()
         {
             InitializeComponent();
             SetTimer();
             GetSunriseSunsetTimes(); // Fetch sunrise and sunset times when the page loads
         }
+        //Timers
         private void SetTimer()
         {
             // Create a timer that triggers every second (1000 ms)
@@ -40,16 +44,11 @@ namespace FindaRise
             });
         }
 
-
-
-
         private async void GetSunriseSunsetTimes()
         {
             try
             {
-                // Specify your location coordinates 42.402830692019236, -83.44996959988292 HOUSE
-                double latitude = 42.402830692019236;
-                double longitude = -83.44996959988292; 
+                GetCoordinatesAsync();
 
                 // Create an HTTP client
                 using HttpClient client = new HttpClient();
@@ -88,7 +87,7 @@ namespace FindaRise
                 Console.WriteLine(ex.Message);
             }
         }
-
+        //Class for sunrise
         public class SunriseSunsetResponse
         {
             public Results Results { get; set; }
@@ -107,6 +106,52 @@ namespace FindaRise
             public string NauticalTwilightEnd { get; set; }
             public string AstronomicalTwilightBegin { get; set; }
             public string AstronomicalTwilightEnd { get; set; }
+        }
+        //GPS
+        private async Task GetCoordinatesAsync()
+        {
+            try
+            {
+                // Check if location services are enabled
+                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                if (location == null)
+                {
+                    // Request a fresh location if last known location is not available
+                    location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
+                }
+
+                if (location != null)
+                {
+                    // Use location coordinates (latitude and longitude)
+                    latitude = location.Latitude;
+                    longitude = location.Longitude;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., permission denied, location unavailable)
+                Welcome.Text = "Unable to get location: " + ex.Message;
+                RiseL.Text = "Error";
+                SetL.Text = "Error";
+            }
+        }
+        private async void SCCtoggle(object sender, EventArgs e)
+        {
+            if (!CordShow)
+            {
+                Cord.IsVisible = true;
+                await GetCoordinatesAsync();
+                CordShow = true;
+                CordSB.Text = "Hide Current Coordinates";
+                Cord.Text = $"Latitude: {latitude}, Longitude: {longitude}";
+            }
+            else
+            {
+                CordSB.Text = "Show Current Coordinates";
+                Cord.IsVisible = false;
+                CordShow = false;
+            }
         }
     }
 }
