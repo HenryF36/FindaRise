@@ -34,5 +34,11 @@ namespace FindaRise
                 ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
             });
         }
+        private void CordTog(object sender, EventArgs e)
+        {
+            
+            Console.WriteLine("Coordinates toggled!");
+            
+        }
     }
 }
