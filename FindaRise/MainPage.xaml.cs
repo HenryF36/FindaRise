@@ -55,9 +55,6 @@ namespace FindaRise
                 string url = $"{ApiUrl}?lat={latitude}&lng={longitude}&formatted=0"; // Use formatted=0 for ISO 8601 format
                 string response = await client.GetStringAsync(url);
 
-                // Log the raw response for debugging
-                RiseL.Text = "API Response: " + response;
-
                 // Deserialize the JSON response using Newtonsoft.Json
                 var result = JsonConvert.DeserializeObject<SunriseSunsetResponse>(response);
 
