@@ -48,9 +48,7 @@ namespace FindaRise
         {
             try
             {
-                // Specify your location coordinates 42.402830692019236, -83.44996959988292 HOUSE
-                double latitude = 42.402830692019236;
-                double longitude = -83.44996959988292; 
+                GetCoordinatesAsync();
 
                 // Create an HTTP client
                 using HttpClient client = new HttpClient();
