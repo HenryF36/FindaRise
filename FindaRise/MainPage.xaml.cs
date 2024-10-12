@@ -132,6 +132,8 @@ namespace FindaRise
             {
                 // Handle exceptions (e.g., permission denied, location unavailable)
                 Welcome.Text = "Unable to get location: " + ex.Message;
+                RiseL.Text = "Error";
+                SetL.Text = "Error";
             }
         }
         private async void SCCtoggle(object sender, EventArgs e)
