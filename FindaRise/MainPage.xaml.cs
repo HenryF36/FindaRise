@@ -65,6 +65,7 @@ namespace FindaRise
                 // Deserialize the JSON response
                 var result = JsonSerializer.Deserialize<SunriseSunsetResponse>(response);
 
+
                 // Check if the result or results is null
                 if (result == null)
                 {
@@ -120,7 +121,8 @@ namespace FindaRise
         public class SunriseSunsetResponse
         {
             public Results Results { get; set; }
-            public string Status { get; set; } // Added to check response status
+            public string Status { get; set; }
+            public string Tzid { get; set; } // Added to capture the time zone ID
         }
 
         public class Results
@@ -128,7 +130,7 @@ namespace FindaRise
             public string Sunrise { get; set; }
             public string Sunset { get; set; }
             public string SolarNoon { get; set; }
-            public string DayLength { get; set; }
+            public int DayLength { get; set; } // Correct type for day_length
             public string CivilTwilightBegin { get; set; }
             public string CivilTwilightEnd { get; set; }
             public string NauticalTwilightBegin { get; set; }
@@ -136,6 +138,7 @@ namespace FindaRise
             public string AstronomicalTwilightBegin { get; set; }
             public string AstronomicalTwilightEnd { get; set; }
         }
+
 
 
     }
