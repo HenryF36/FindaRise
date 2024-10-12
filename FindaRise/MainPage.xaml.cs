@@ -42,6 +42,7 @@ namespace FindaRise
             {
                 ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
             });
+            GetSunriseSunsetTimes();
         }
 
         private async void GetSunriseSunsetTimes()
