@@ -8,16 +8,10 @@
             Padding="30,0"
             Spacing="25">
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}" />
-            <Label x:Name="RiseL" Text="The sun will rise at loading..." HorizontalOptions="Center"/>
-            <Label x:Name="SetL" Text="The sun will set at loading..." HorizontalOptions="Center"/>
+        <Label
+                Text="Welcome to Find-A-Rise" FontSize="50" HorizontalOptions="Center"/>
+            <Label x:Name="RiseL" Text="The sun will rise at loading..." FontSize="30" HorizontalOptions="Center"/>
+            <Label x:Name="SetL" Text="The sun will set at loading..." FontSize="30" HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>
