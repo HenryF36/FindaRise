@@ -9,7 +9,7 @@
             Spacing="25">
 
         <Label
-                Text="Welcome to Find-A-Rise" FontSize="50" HorizontalOptions="Center"/>
+                Text="Welcome to Find-A-Rise" x:Name="Welcome" FontSize="50" HorizontalOptions="Center"/>
             <Label x:Name="ClockL" Text="00:00:00" FontSize="35" HorizontalOptions="Center"/>
             <Label x:Name="RiseL" Text="The sun will rise at loading..." FontSize="30" HorizontalOptions="Center"/>
             <Label x:Name="SetL" Text="The sun will set at loading..." FontSize="30" HorizontalOptions="Center"/>
