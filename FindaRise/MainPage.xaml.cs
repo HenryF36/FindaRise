@@ -14,8 +14,8 @@ namespace FindaRise
         private const string ApiUrl = "https://api.sunrise-sunset.org/json";
         private static System.Timers.Timer _timer;
         public Boolean CordShow = false;
-        public double latitude;
-        public double longitude;
+        public double latitude=6666666666666666;
+        public double longitude = 66666666666;
         public MainPage()
         {
             InitializeComponent();
@@ -120,7 +120,7 @@ namespace FindaRise
                 if (location == null)
                 {
                     // Request a fresh location if last known location is not available
-                    location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+                    location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High));
                 }
 
                 if (location != null)
