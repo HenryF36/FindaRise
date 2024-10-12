@@ -16,8 +16,8 @@
             <Label
                 Text="Welcome to &#10;.NET Multi-platform App UI"
                 Style="{StaticResource SubHeadline}" />
-            <Label x:Name="RiseL" Text="The sun will rise at loading..."/>
-            <Label x:Name="SetL" Text="The sun will set at loading..."/>
+            <Label x:Name="RiseL" Text="The sun will rise at loading..." HorizontalOptions="Center"/>
+            <Label x:Name="SetL" Text="The sun will set at loading..." HorizontalOptions="Center"/>
 
         </VerticalStackLayout>
     </ScrollView>
