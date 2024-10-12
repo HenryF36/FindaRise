@@ -42,14 +42,13 @@ namespace FindaRise
             {
                 ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
             });
-            GetSunriseSunsetTimes();
         }
 
         private async void GetSunriseSunsetTimes()
         {
             try
             {
-                GetCoordinatesAsync();
+                await GetCoordinatesAsync();
 
                 // Create an HTTP client
                 using HttpClient client = new HttpClient();
@@ -71,7 +70,11 @@ namespace FindaRise
                     // Update UI labels with sunrise and sunset times
                     RiseL.Text = $"The sun will rise at {sunriseUtc.ToLocalTime():hh:mm:ss tt}";
                     SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
-                    DayL.Text = $"The day length is {result.Results.DayLength}";
+                    if (int.TryParse(result.Results.day_length, out int dayLengthInSeconds))
+                    {
+                        double dayLengthInMinutes = dayLengthInSeconds / 60.0; // Convert seconds to minutes
+                        DayL.Text = $"The day length is {dayLengthInMinutes} minutes"; // Update UI to display in minutes
+                    }
                 }
                 else
                 {
@@ -87,7 +90,7 @@ namespace FindaRise
                 // Handle exceptions (e.g., network issues, JSON parsing errors)
                 RiseL.Text = "Error fetching sunrise time.";
                 SetL.Text = "Error fetching sunset time.";
-                DayL.Text = "Error fetching day length";
+                DayL.Text = "Error fetching day length.";
             }
         }
         //Class for sunrise
@@ -102,7 +105,7 @@ namespace FindaRise
             public string Sunrise { get; set; }
             public string Sunset { get; set; }
             public string SolarNoon { get; set; }
-            public string DayLength { get; set; }
+            public string day_length { get; set; }
             public string CivilTwilightBegin { get; set; }
             public string CivilTwilightEnd { get; set; }
             public string NauticalTwilightBegin { get; set; }
