@@ -31,7 +31,7 @@ namespace FindaRise
             // Update the label on the main thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                ClockL.Text = formattedTime;  // Safely update the UI
+                ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
             });
         }
     }
