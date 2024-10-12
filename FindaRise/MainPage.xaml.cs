@@ -13,6 +13,9 @@ namespace FindaRise
     {
         private const string ApiUrl = "https://api.sunrise-sunset.org/json";
         private static System.Timers.Timer _timer;
+        public Boolean CordShow = false;
+        public double latitude;
+        public double longitude;
         public MainPage()
         {
             InitializeComponent();
@@ -107,9 +110,48 @@ namespace FindaRise
             public string AstronomicalTwilightEnd { get; set; }
         }
         //GPS
-        private void SCCtoggle(object sender, EventArgs e)
+        private async Task GetCoordinatesAsync()
         {
-            
+            try
+            {
+                // Check if location services are enabled
+                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                if (location == null)
+                {
+                    // Request a fresh location if last known location is not available
+                    location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+                }
+
+                if (location != null)
+                {
+                    // Use location coordinates (latitude and longitude)
+                    latitude = location.Latitude;
+                    longitude = location.Longitude;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., permission denied, location unavailable)
+                Welcome.Text = "Unable to get location: " + ex.Message;
+            }
+        }
+        private async void SCCtoggle(object sender, EventArgs e)
+        {
+            if (!CordShow)
+            {
+                Cord.IsVisible = true;
+                await GetCoordinatesAsync();
+                CordShow = true;
+                CordSB.Text = "Hide Current Coordinates";
+                Cord.Text = $"Latitude: {latitude}, Longitude: {longitude}";
+            }
+            else
+            {
+                CordSB.Text = "Show Current Coordinates";
+                Cord.IsVisible = false;
+                CordShow = false;
+            }
         }
     }
 }
