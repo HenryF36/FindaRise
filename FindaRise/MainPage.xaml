@@ -4,33 +4,39 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+            Padding="30,20"
+            Spacing="25"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
 
             <Label
                 Text="Welcome to Find-A-Rise" 
                 x:Name="Welcome" 
-                FontSize="50" 
-                HorizontalOptions="Center" />
+                FontSize="{OnPlatform Default='36', WinUI='48'}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center" />
+
             <HorizontalStackLayout 
-    Spacing="10" 
-    VerticalOptions="Center" 
-    HorizontalOptions="Center">
+                Spacing="10" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center">
 
                 <Image 
-        Source="clock.png" 
-        Aspect="AspectFit" 
-        HeightRequest="50" 
-        WidthRequest="50" 
-        VerticalOptions="Center" />
+                    Source="clock.png" 
+                    Aspect="AspectFit" 
+                    HeightRequest="50" 
+                    WidthRequest="50" 
+                    VerticalOptions="Center" />
+
                 <Label 
-                x:Name="ClockL" 
-                Text="00:00:00" 
-                FontSize="35" 
-                HorizontalOptions="Center" />
+                    x:Name="ClockL" 
+                    Text="00:00:00" 
+                    FontSize="{OnPlatform Default='28', WinUI='38'}"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" 
+                    LineBreakMode="TailTruncation" />
             </HorizontalStackLayout>
 
-            <!-- Image and Label side by side -->
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
@@ -46,8 +52,10 @@
                 <Label 
                     x:Name="RiseL" 
                     Text="The sun will rise at loading..." 
-                    FontSize="30" 
-                    VerticalOptions="Center" />
+                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    LineBreakMode="WordWrap" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
@@ -65,8 +73,10 @@
                 <Label 
                     x:Name="SetL" 
                     Text="The sun will set at loading..." 
-                    FontSize="30" 
-                    HorizontalOptions="Center" />
+                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    LineBreakMode="WordWrap" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
@@ -84,13 +94,18 @@
                 <Label 
                     x:Name="DayL" 
                     Text="The day length is loading..." 
-                    FontSize="30" 
-                    HorizontalOptions="Center" />
+                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    LineBreakMode="WordWrap" />
             </HorizontalStackLayout>
 
             <Button 
                 x:Name="CordSB" 
                 Text="Show Current Coordinates" 
+                FontSize="{OnPlatform Default='Medium', WinUI='Large'}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
                 Clicked="SCCtoggle" />
 
             <HorizontalStackLayout 
@@ -105,18 +120,19 @@
                     WidthRequest="50" 
                     x:Name="cordim"
                     IsVisible="False"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"/>
 
                 <Label 
                     x:Name="Cord" 
                     Text="No Coordinates Found" 
                     IsVisible="False" 
-                    FontSize="25" 
-                    HorizontalOptions="Center" />
+                    FontSize="{OnPlatform Default='Small', WinUI='Medium'}"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    LineBreakMode="WordWrap" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
-
