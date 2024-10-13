@@ -20,7 +20,7 @@ namespace FindaRise
         {
             InitializeComponent();
             SetTimer();
-            GetSunriseSunsetTimes(); // Fetch sunrise and sunset times when the page loads
+            GetSunriseSunsetTimes(0); // Fetch sunrise and sunset times when the page loads
         }
         //Timers
         private void SetTimer()
@@ -40,16 +40,33 @@ namespace FindaRise
             // Update the label on the main thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                ClockL.Text = "Current Time is " + formattedTime;  // Safely update the UI
+                ClockL.Text = "The Local Time is " + formattedTime;  // Safely update the UI
             });
         }
 
-        private async void GetSunriseSunsetTimes()
+        private async void GetSunriseSunsetTimes(int d)
         {
             try
             {
-                await GetCoordinatesAsync();
-
+                if(d == 0)
+                {
+                    await GetCoordinatesAsync();
+                }
+                if (d == 1) {
+                    latitude = 28.538336;
+                    longitude = -81.379234;
+                }
+                if (d == 2) { latitude = 42.331429; longitude = 83.045753; }
+                if (d ==3) { latitude = 48.856613; longitude = 2.35222; }
+                if (d == 4) { latitude = 37.566536; longitude = 126.977966; }
+                if (d == 5) { latitude = 37.773972; longitude = 122.431297; } //San Francisco
+                if (d == 6) { latitude = 38.889805; longitude = 77.009056; }//DC Capitol
+                if (d == 7) { latitude = 35.652832; longitude = 139.839478; } //Tokyo
+                else
+                {
+                    latitude = 66666666666;
+                    longitude = 666666;
+                }
                 // Create an HTTP client
                 using HttpClient client = new HttpClient();
                 string url = $"{ApiUrl}?lat={latitude}&lng={longitude}&formatted=0"; // Use formatted=0 for ISO 8601 format
@@ -69,7 +86,7 @@ namespace FindaRise
                     SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
                     if (int.TryParse(result.Results.day_length, out int dayLengthInSeconds))
                     {
-                        double dayLengthInHours = dayLengthInSeconds / 60.0/60; // Convert seconds to hours
+                        double dayLengthInHours = dayLengthInSeconds / 60.0 / 60; // Convert seconds to hours
                         dayLengthInHours = Math.Round(dayLengthInHours, 2); //Round
                         DayL.Text = $"The day length is {dayLengthInHours} hours"; // Update UI to display in minutes
                     }
@@ -156,9 +173,15 @@ namespace FindaRise
             {
                 CordSB.Text = "Show Current Coordinates";
                 Cord.IsVisible = false;
-                cordim.IsVisible= false;
+                cordim.IsVisible = false;
                 CordShow = false;
             }
+        }
+
+        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetSunriseSunsetTimes(LocationPicker.SelectedIndex);
+
         }
     }
 }
