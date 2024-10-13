@@ -69,7 +69,8 @@ namespace FindaRise
                     SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
                     if (int.TryParse(result.Results.day_length, out int dayLengthInSeconds))
                     {
-                        double dayLengthInHours = dayLengthInSeconds / 60.0/60 ; // Convert seconds to minutes
+                        double dayLengthInHours = dayLengthInSeconds / 60.0/60; // Convert seconds to hours
+                        dayLengthInHours = Math.Round(dayLengthInHours, 2); //Round
                         DayL.Text = $"The day length is {dayLengthInHours} hours"; // Update UI to display in minutes
                     }
                 }
