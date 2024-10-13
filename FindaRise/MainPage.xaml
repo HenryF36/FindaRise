@@ -132,7 +132,20 @@
                     VerticalOptions="Center"
                     LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
-
+            <HorizontalStackLayout Spacing="20">
+                <Label Text="Location: "/>
+                <Picker x:Name="LocationPicker" 
+                    Title="Select Location"
+                    SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Location A</x:String>
+                            <x:String>Location B</x:String>
+                            <x:String>Location C</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

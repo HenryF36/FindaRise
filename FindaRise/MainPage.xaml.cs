@@ -69,7 +69,7 @@ namespace FindaRise
                     SetL.Text = $"The sun will set at {sunsetUtc.ToLocalTime():hh:mm:ss tt}";
                     if (int.TryParse(result.Results.day_length, out int dayLengthInSeconds))
                     {
-                        double dayLengthInHours = dayLengthInSeconds / 60.0/60; // Convert seconds to hours
+                        double dayLengthInHours = dayLengthInSeconds / 60.0 / 60; // Convert seconds to hours
                         dayLengthInHours = Math.Round(dayLengthInHours, 2); //Round
                         DayL.Text = $"The day length is {dayLengthInHours} hours"; // Update UI to display in minutes
                     }
@@ -156,9 +156,15 @@ namespace FindaRise
             {
                 CordSB.Text = "Show Current Coordinates";
                 Cord.IsVisible = false;
-                cordim.IsVisible= false;
+                cordim.IsVisible = false;
                 CordShow = false;
             }
+        }
+
+        private void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
