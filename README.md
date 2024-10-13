@@ -1,4 +1,4 @@
-This app designed for android tablet, android phone, and Windows 11 can show you when the sun will rise and set at your location to the second.
+This app designed for android tablet, android phone, and Windows 11 can show you when the sun will rise and set at your location and the location of big citys to the second.
 It uses an API called sunrise-sunset.
 It shows the current time and day length.
 It also shows the current cordantates that the sunset are set to.
