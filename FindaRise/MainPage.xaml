@@ -43,9 +43,17 @@
             </HorizontalStackLayout>
 
             <!-- Location Picker -->
-            <HorizontalStackLayout Spacing="20" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                <Label Text="Location: " VerticalOptions="Center"/>
-                <Picker x:Name="LocationPicker" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+            <HorizontalStackLayout Spacing="20">
+                <Label Text="Location: "
+           FontSize="{OnPlatform Default='24', Android='22', WinUI='28'}"
+           VerticalOptions="Center" 
+           HorizontalOptions="FillAndExpand" />
+
+                <Picker x:Name="LocationPicker"
+            SelectedIndexChanged="OnPickerSelectedIndexChanged"
+            FontSize="{OnPlatform Default='24', Android='22', WinUI='28'}"
+            VerticalOptions="Center" 
+            HorizontalOptions="FillAndExpand">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Here</x:String>
@@ -57,6 +65,7 @@
                     </Picker.ItemsSource>
                 </Picker>
             </HorizontalStackLayout>
+
 
         </VerticalStackLayout>
     </ScrollView>
