@@ -59,6 +59,9 @@ namespace FindaRise
                 if (d == 2) { latitude = 42.331429; longitude = 83.045753; }
                 if (d ==3) { latitude = 48.856613; longitude = 2.35222; }
                 if (d == 4) { latitude = 37.566536; longitude = 126.977966; }
+                if (d == 5) { latitude = 37.773972; longitude = 122.431297; } //San Francisco
+                if (d == 6) { latitude = 38.889805; longitude = 77.009056; }//DC Capitol
+                if (d == 7) { latitude = 35.652832; longitude = 139.839478; } //Tokyo
                 else
                 {
                     latitude = 66666666666;
