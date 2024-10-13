@@ -13,13 +13,14 @@
                 Text="Welcome to Find-A-Rise" 
                 x:Name="Welcome" 
                 FontSize="{OnPlatform Default='36', WinUI='48'}"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center" />
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                LineBreakMode="WordWrap" />
 
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand">
 
                 <Image 
                     Source="clock.png" 
@@ -32,15 +33,17 @@
                     x:Name="ClockL" 
                     Text="00:00:00" 
                     FontSize="{OnPlatform Default='28', WinUI='38'}"
-                    HorizontalOptions="Center" 
+                    HorizontalOptions="FillAndExpand" 
                     VerticalOptions="Center" 
-                    LineBreakMode="TailTruncation" />
+                    LineBreakMode="WordWrap" 
+                    WidthRequest="200"/>
+                <!-- Set a specific width if needed -->
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand">
 
                 <Image 
                     Source="sunrise.png" 
@@ -54,14 +57,16 @@
                     Text="The sun will rise at loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    LineBreakMode="WordWrap" />
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="WordWrap" 
+                    WidthRequest="200"/>
+                <!-- Set a specific width if needed -->
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand">
 
                 <Image 
                     Source="sunset.png" 
@@ -75,14 +80,16 @@
                     Text="The sun will set at loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    LineBreakMode="WordWrap" />
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="WordWrap" 
+                    WidthRequest="200"/>
+                <!-- Set a specific width if needed -->
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand">
 
                 <Image 
                     Source="day_length.png" 
@@ -96,8 +103,10 @@
                     Text="The day length is loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    LineBreakMode="WordWrap" />
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="WordWrap" 
+                    WidthRequest="200"/>
+                <!-- Set a specific width if needed -->
             </HorizontalStackLayout>
 
             <Button 
@@ -105,13 +114,13 @@
                 Text="Show Current Coordinates" 
                 FontSize="{OnPlatform Default='Medium', WinUI='Large'}"
                 VerticalOptions="Center" 
-                HorizontalOptions="Center"
+                HorizontalOptions="FillAndExpand"
                 Clicked="SCCtoggle" />
 
             <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand">
 
                 <Image 
                     Source="cord.png" 
@@ -127,9 +136,11 @@
                     Text="No Coordinates Found" 
                     IsVisible="False" 
                     FontSize="{OnPlatform Default='Small', WinUI='Medium'}"
-                    HorizontalOptions="Center" 
+                    HorizontalOptions="FillAndExpand" 
                     VerticalOptions="Center"
-                    LineBreakMode="WordWrap" />
+                    LineBreakMode="WordWrap" 
+                    WidthRequest="200"/>
+                <!-- Set a specific width if needed -->
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
