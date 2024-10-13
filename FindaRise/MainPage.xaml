@@ -12,10 +12,10 @@
             <Label
                 Text="Welcome to Find-A-Rise" 
                 x:Name="Welcome" 
-                FontSize="{OnPlatform Default='36', WinUI='48'}"
-                HorizontalOptions="FillAndExpand"
+                FontSize="{OnPlatform Default='36', Android='28', WinUI='48'}"
+                HorizontalOptions="Center"
                 VerticalOptions="Center"
-                LineBreakMode="WordWrap" />
+                LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
 
             <HorizontalStackLayout 
                 Spacing="10" 
@@ -32,12 +32,10 @@
                 <Label 
                     x:Name="ClockL" 
                     Text="00:00:00" 
-                    FontSize="{OnPlatform Default='28', WinUI='38'}"
-                    HorizontalOptions="FillAndExpand" 
+                    FontSize="{OnPlatform Default='24', Android='20', WinUI='38'}"
+                    HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center" 
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
+                    LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
@@ -55,12 +53,10 @@
                 <Label 
                     x:Name="RiseL" 
                     Text="The sun will rise at loading..." 
-                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    FontSize="{OnPlatform Default='20', Android='18', WinUI='32'}"
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
+                    LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
@@ -78,12 +74,10 @@
                 <Label 
                     x:Name="SetL" 
                     Text="The sun will set at loading..." 
-                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    FontSize="{OnPlatform Default='20', Android='18', WinUI='32'}"
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
+                    LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 
@@ -101,18 +95,16 @@
                 <Label 
                     x:Name="DayL" 
                     Text="The day length is loading..." 
-                    FontSize="{OnPlatform Default='24', WinUI='32'}"
+                    FontSize="{OnPlatform Default='20', Android='18', WinUI='32'}"
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
+                    LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
 
             <Button 
                 x:Name="CordSB" 
                 Text="Show Current Coordinates" 
-                FontSize="{OnPlatform Default='Medium', WinUI='Large'}"
+                FontSize="{OnPlatform Default='Medium', Android='Small', WinUI='Large'}"
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand"
                 Clicked="SCCtoggle" />
@@ -135,15 +127,13 @@
                     x:Name="Cord" 
                     Text="No Coordinates Found" 
                     IsVisible="False" 
-                    FontSize="{OnPlatform Default='Small', WinUI='Medium'}"
-                    HorizontalOptions="FillAndExpand" 
+                    FontSize="{OnPlatform Default='Small', Android='Small', WinUI='Medium'}"
+                    HorizontalOptions="FillAndExpand"
                     VerticalOptions="Center"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
+                    LineBreakMode="{OnPlatform Default='NoWrap', WinUI='NoWrap'}" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
+
