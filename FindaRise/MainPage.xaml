@@ -13,103 +13,100 @@
                 Text="Welcome to Find-A-Rise" 
                 x:Name="Welcome" 
                 FontSize="{OnPlatform Default='36', WinUI='48'}"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="Center" 
                 VerticalOptions="Center"
-                LineBreakMode="WordWrap" />
+                LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                <!-- NoWrap for Windows -->
 
-            <HorizontalStackLayout 
+                <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand">
 
-                <Image 
+                    <Image 
                     Source="clock.png" 
                     Aspect="AspectFit" 
                     HeightRequest="50" 
                     WidthRequest="50" 
                     VerticalOptions="Center" />
 
-                <Label 
+                    <Label 
                     x:Name="ClockL" 
                     Text="00:00:00" 
                     FontSize="{OnPlatform Default='28', WinUI='38'}"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="Center" 
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
-            </HorizontalStackLayout>
+                    HorizontalOptions="Start" 
+                        VerticalOptions="Center" 
+                    LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                        <!-- NoWrap for Windows -->
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout 
+                <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand">
 
-                <Image 
+                    <Image 
                     Source="sunrise.png" 
                     Aspect="AspectFit" 
                     HeightRequest="50" 
                     WidthRequest="50" 
                     VerticalOptions="Center" />
 
-                <Label 
+                    <Label 
                     x:Name="RiseL" 
                     Text="The sun will rise at loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
-            </HorizontalStackLayout>
+                    HorizontalOptions="Start" 
+                        LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                        <!-- NoWrap for Windows -->
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout 
+                <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand">
 
-                <Image 
+                    <Image 
                     Source="sunset.png" 
                     Aspect="AspectFit" 
                     HeightRequest="50" 
                     WidthRequest="50" 
                     VerticalOptions="Center" />
 
-                <Label 
+                    <Label 
                     x:Name="SetL" 
                     Text="The sun will set at loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
-            </HorizontalStackLayout>
+                    HorizontalOptions="Start" 
+                        LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                        <!-- NoWrap for Windows -->
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout 
+                <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand">
 
-                <Image 
+                    <Image 
                     Source="day_length.png" 
                     Aspect="AspectFit" 
                     HeightRequest="50" 
                     WidthRequest="50" 
                     VerticalOptions="Center" />
 
-                <Label 
+                    <Label 
                     x:Name="DayL" 
                     Text="The day length is loading..." 
                     FontSize="{OnPlatform Default='24', WinUI='32'}"
                     VerticalOptions="Center" 
-                    HorizontalOptions="FillAndExpand"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
-            </HorizontalStackLayout>
+                    HorizontalOptions="Start" 
+                        LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                        <!-- NoWrap for Windows -->
+                </HorizontalStackLayout>
 
-            <Button 
+                <Button 
                 x:Name="CordSB" 
                 Text="Show Current Coordinates" 
                 FontSize="{OnPlatform Default='Medium', WinUI='Large'}"
@@ -117,12 +114,12 @@
                 HorizontalOptions="FillAndExpand"
                 Clicked="SCCtoggle" />
 
-            <HorizontalStackLayout 
+                <HorizontalStackLayout 
                 Spacing="10" 
                 VerticalOptions="Center" 
                 HorizontalOptions="FillAndExpand">
 
-                <Image 
+                    <Image 
                     Source="cord.png" 
                     Aspect="AspectFit" 
                     HeightRequest="50" 
@@ -131,17 +128,16 @@
                     IsVisible="False"
                     VerticalOptions="Center"/>
 
-                <Label 
+                    <Label 
                     x:Name="Cord" 
                     Text="No Coordinates Found" 
                     IsVisible="False" 
                     FontSize="{OnPlatform Default='Small', WinUI='Medium'}"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="Center"
-                    LineBreakMode="WordWrap" 
-                    WidthRequest="200"/>
-                <!-- Set a specific width if needed -->
-            </HorizontalStackLayout>
+                    HorizontalOptions="Start" 
+                        VerticalOptions="Center"
+                    LineBreakMode="{OnPlatform Default='WordWrap', WinUI='NoWrap'}" />
+                        <!-- NoWrap for Windows -->
+                </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
