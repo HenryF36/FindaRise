@@ -134,14 +134,15 @@
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="20">
                 <Label Text="Location: "/>
-                <Picker x:Name="LocationPicker" 
-                    Title="Select Location"
+                <Picker x:Name="LocationPicker"
                     SelectedIndexChanged="OnPickerSelectedIndexChanged">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Location A</x:String>
-                            <x:String>Location B</x:String>
-                            <x:String>Location C</x:String>
+                            <x:String>Here</x:String>
+                            <x:String>Orlando</x:String>
+                            <x:String>Detroit</x:String>
+                            <x:String>Paris</x:String>
+                            <x:String>서울</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
